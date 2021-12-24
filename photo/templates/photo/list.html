@@ -1,0 +1,20 @@
+{% for post in photos %}
+    <div class="row">
+        <div class="col-md-2"></div>
+<!--        coll-md-2 부트스트렙 문법 너비가 어느정도일때 2블록을 가져간다는 의미 기본 12조각으로 나눔-->
+        <div class="col-md-8 panel panel-default"></div>
+            <p><img src="{{post.photo.url}}" style="width:100%;"></p>
+<!--        포스트 사진 게시글 중에 하나, 포토 인스턴스 중에 하나 그리고 photo 필드에서 url(경로)를 나타냄-->
+            <button type="button" class="btn btn-xs btn info">
+                {{post.author.username}}
+            </button>
+<!--        btn info 버튼 색-->
+            <p>{{post.text|linebreaksbr}}</p>
+<!--        |뒤가 옵션임 템플릿 필터라고 부름, 게시글에서 엔터 치면 줄바꿈이 되는 것 html에서 줄바꿈은 br인데
+            줄바꿈 문자로 바꿔주는 것, 데이터베이스에 들어갈때는 줄바꿈 문자로 들어감-->
+            <p class="text-right">
+                <a href="{ % url 'photo:photo_detail' pk=post.id %}" class="btn btn-xs btn-success"></a>
+            </p>
+        <div class="col-md-2"></div>
+    </div>
+{% endfor %}
