@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}- Delete{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="alert alert-info">
+                Do you want to delete {{object}}?
+    <!--            여기서 object는 model에 str 메소드에서 가져옴-->
+            </div>
+            <form action="" method="post">
+    <!--            action 아래 sumit 후 이동하는 페이지 없으면 강은 페이지-->
+                {{form.as_p}}
+                {% csrf_token %}
+    <!--            csrf 공격을 방지 -->
+                <input type="submit" class="btn btn-primary" value="Confirm">
+            </form>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+{% endblock %}

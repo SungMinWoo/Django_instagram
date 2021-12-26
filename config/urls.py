@@ -16,8 +16,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from django.conf.urls.static import static
+from django.conf import settings
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include('accounts.urls')),
     # 127.0.0.1:8000/abcd/ 로 들어가면 admin 주소에 안결려서 아래로 이동
     path('', include('photo.urls')), # main인데 include 다른 url 주소로 넘겨주는 역할을함
+
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# debug 모드일때만 활용 가능
+# 실제 배포 시
+# 1. 미디어 파일 서버를 별도로 두고 사용한다.
+# 2. 웹서버에서 별도로 서빙 설정을 한다.
