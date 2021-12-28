@@ -8,8 +8,9 @@ app_name = 'photo' # name_space
 urlpatterns = [
     path('', photo_list, name='photo_list'),
     # 글래스형 뷰가 아니라서 as_view가 안들어감
-    path('detail/<int:pk>/', DetailView.as_view(model=Photo, template_name='photo/detail.html'),
-         name='photo_detail'),
+    # path('detail/<int:pk>/', DetailView.as_view(model=Photo, template_name='photo/detail.html'),
+    #      name='photo_detail'),
+    path('detail/<int:pk>/', PhotoDetailView.as_view(), name='photo_detail'),
     # view.py에다 써주는게 아니라 여기다 바로 써주는 것, view에다 써줘도 짧은 내용은 그냥 써줘도됨
     path('upload/', PhotoUploadView.as_view(), name='photo_upload'),
     path('delete/<int:pk>/', PhotoDeleteView.as_view(), name='photo_delete'),

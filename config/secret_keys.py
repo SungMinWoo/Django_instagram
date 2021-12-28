@@ -1,0 +1,2 @@
+MY_AWS_ACCESS_KEY_ID = 'test'
+MY_AWS_SECRET_ACCESS_KEY = 'test'

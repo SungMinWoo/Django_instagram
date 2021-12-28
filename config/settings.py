@@ -131,3 +131,33 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# reverse_lazy 함수를 사용해서 다른 뷰를 적용할 수 있음
+LOGIN_REDIRECT_URL = '/'
+
+
+# from .secret_keys import *
+# AWS_ACCESS_KET_ID = MY_AWS_ACCESS_KEY_ID
+# AWS_SECRET_ACCESS_KET = MY_AWS_SECRET_ACCESS_KEY
+# AWS_REGION = 'ap-noryheast-2'
+# AWS_STORAGE_BUCKET_NAME = 'dstagram=django3'
+# AWS_S3_CUSTOM_DOMAIN = '%s.s3.%s.amazonaws.com'%(AWS_STORAGE_BUCKET_NAME, AWS_REGION)
+#
+# AWS_S3_FILE_OVERWRITE = False
+# # 파일 오버라이트 방지
+# AWS_S3_OBJECT_PARAMETERS = {
+#     'CacheControl':'max-age=86400'
+# } # cash 강제로 삭제하기, 관리자가 바꿔도 cash가 사용자에게 남아 있어 다른 화면을 보여주는 것을 방지
+#
+# AWS_DEAFULT_ACL = 'public-read'
+# # 파일을 올릴 때 어떤 권한으로 올리는지, 설정 안하면 가끔 외부 접근이 안되서 못보는 경우가 생김
+# AWS_LOCATION = 'static'
+# # 버킷 안에 어느 폴더에 집어 넣을지
+#
+# STATIC_URL = 'http://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+# # 위에 static_url 경로를 바꿔줘서 AWS 서비스 경로를 바꿈
+# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+#
+# # 가상 url 웹 브라우져에서는 media폴더 밑에 있다고 보임, 외부 사용자가 폴더 구조를 알 수 없게끔 가짜 정보를 흘림
+#
+# DEFAULT_FILE_STORAGE = 'config.s3media.MediaStorage'

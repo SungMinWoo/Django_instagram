@@ -1,8 +1,11 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import Photo
 # Create your views here.
 
+@login_required # decorate 기법
 def photo_list(request):
     # 함수형 뷰는 항상 첫 번째 매개변수는 request로 넣어줌 req로 해도됨
     # 보여줄 사진 데이터
@@ -18,7 +21,7 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.shortcuts import redirect # uploadview에서 필요함
 
 
-class PhotoUploadView(CreateView):
+class PhotoUploadView(LoginRequiredMixin, CreateView):
     model = Photo
     fields = ['photo', 'text'] # 작성자(author), 작성시간(created)
     template_name = 'photo/upload.html'
@@ -36,13 +39,20 @@ class PhotoUploadView(CreateView):
             # 예를들어 회원가입할때 잘못입력하면 해당 페이지로 다시 가는데 칸이 비어있지않고 입력했던게 채워져있으려면 넣어야함
 
 
-class PhotoDeleteView(DeleteView):
+class PhotoDeleteView(LoginRequiredMixin, DeleteView):
     model = Photo
     success_url = '/' # main화면
     template_name = 'photo/delete.html'
 
 
-class PhotoUpdateView(UpdateView):
+class PhotoUpdateView(LoginRequiredMixin, UpdateView):
     model = Photo
     fields = ['photo', 'text']
     template_name = 'photo/update.html'
+
+
+class PhotoDetailView(LoginRequiredMixin, UpdateView):
+    model = Photo
+    fields = ['photo', 'text']
+    template_name = 'photo/detail.html'
+

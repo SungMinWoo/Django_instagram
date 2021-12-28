@@ -28,7 +28,7 @@
                 <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link">Logout</a></li>
                 {% else %}
                 <li class="nav-item"><a href="{% url 'login' %}" class="nav-link">Login</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Signup</a></li>
+                <li class="nav-item"><a href="{% url 'register' %}" class="nav-link">Signup</a></li>
                 {% endif %}
             </ul>
         </nav>
@@ -37,7 +37,7 @@
     {% endblock %}
 
     <footer class="footer">
-        <p>&copy; 2020 Baepeu. Powered By Django 3</p>
+        <p>&copy; 2021 MinWoo. Powered By Django 4</p>
     </footer>
 </div>
 
